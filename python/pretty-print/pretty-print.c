@@ -8,7 +8,7 @@ struct Node
 
 typedef struct Node* List;
 
-void use_list(List list)
+void break_here(List list)
 {
   // Do nothing, set breakpoint here
 }
@@ -46,7 +46,7 @@ void free_list(List list)
 int main(void)
 {
   List list = create_list(10);
-  use_list(list);
+  break_here(list);
   free_list(list);
   return 0;
 }
