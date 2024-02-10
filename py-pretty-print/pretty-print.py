@@ -23,5 +23,6 @@ package_pretty_printers = RegexpCollectionPrettyPrinter("gdb-ext-examples")
 register_pretty_printer(None, package_pretty_printers)
 # Add the ListPrinter to the collection
 # Make sure to use the correct type for the regex
-# Use ptype in gdb to find it
+# Use `ptype` in gdb to find it.
+# Or `python print(gdb.selected_frame().read_var("<variable name>").type.name)`
 package_pretty_printers.add_printer("List", "^Node$", ListPrinter)
