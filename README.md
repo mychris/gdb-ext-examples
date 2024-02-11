@@ -15,6 +15,38 @@ each application has a function called `break_here` in which a
 breakpoint can be set.  The `*.gdb` file should do this already.
 Start GDB with the provided command line.
 
+## Introduction
+
+One can write simple python extensions inline in GDB:
+
+```
+(gdb) python
+class HelloWorld(gdb.Command):
+
+  def __init__(self):
+    super(HelloWorld, self).__init__("hello", gdb.COMMAND_STATUS)
+
+  def invoke(self, arg, from_tty):
+    print("Hello World")
+
+HelloWorld()
+end
+```
+
+This creates a new GDB command with the name `hello` and instantiates it.
+It can be used afterwards and will print "Hello World":
+
+```
+(gdb) hello
+Hello World
+```
+
+```
+(gdb) python gdb.set_convenience_variable("foo", 5)
+(gdb) print $foo + 5
+$1 = 10
+```
+
 ## GDB documentation
 
 The online documentation is only available for the latest release:
